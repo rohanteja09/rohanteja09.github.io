@@ -43,7 +43,21 @@
   .wrap{ max-width: var(--maxw); margin:0 auto; padding:0 28px; position:relative; z-index:1; }
   .section{ padding: 108px 0; position:relative; }
 
-  .grad-text{ background: linear-gradient(95deg, var(--blue), var(--purple)); -webkit-background-clip:text; background-clip:text; color:transparent; }
+  .grad-text{ background: linear-gradient(95deg, var(--blue), var(--purple), var(--pink), var(--blue)); background-size: 300% auto; -webkit-background-clip:text; background-clip:text; color:transparent; animation: gradShift 6s linear infinite; }
+  @keyframes gradShift{ to{ background-position: 300% center; } }
+
+  /* FLOATING PARTICLES */
+  .particles{ position:absolute; inset:0; overflow:hidden; pointer-events:none; z-index:0; }
+  .particle{
+    position:absolute; width:4px; height:4px; border-radius:50%; background: var(--purple); opacity:0.5;
+    animation: particleFloat linear infinite;
+  }
+  @keyframes particleFloat{
+    0%{ transform: translateY(0) translateX(0); opacity:0; }
+    10%{ opacity:0.6; }
+    90%{ opacity:0.4; }
+    100%{ transform: translateY(-620px) translateX(var(--drift,20px)); opacity:0; }
+  }
 
   .eyebrow{
     font-size:12px; font-weight:600; text-transform:uppercase; letter-spacing:0.12em;
@@ -51,7 +65,13 @@
   }
   .eyebrow span{ background: linear-gradient(95deg, var(--blue), var(--purple)); -webkit-background-clip:text; background-clip:text; color:transparent; }
 
-  .section-title{ font-size: clamp(26px,3.2vw,36px); font-weight:700; }
+  .section-title{ font-size: clamp(26px,3.2vw,36px); font-weight:700; position:relative; display:block; width:fit-content; }
+  .section-title::after{
+    content:''; position:absolute; left:0; bottom:-8px; height:3px; width:0;
+    background: linear-gradient(95deg, var(--blue), var(--purple)); border-radius:2px;
+    transition: width .8s cubic-bezier(.2,.7,.2,1);
+  }
+  .section-head.revealed .section-title::after{ width:60px; }
   .section-sub{ color: var(--text-muted); font-size:15px; max-width:540px; margin-top:14px; }
   .section-head{ margin-bottom: 50px; }
 
@@ -76,8 +96,13 @@
     display:inline-flex; align-items:center; gap:8px;
     padding: 13px 24px; font-size:14px; font-weight:600; border-radius:9px;
     border:1.5px solid transparent; cursor:pointer; transition: all .25s ease;
-    font-family:'Inter', sans-serif;
+    font-family:'Inter', sans-serif; position:relative; overflow:hidden;
   }
+  .btn .ripple-fx{
+    position:absolute; border-radius:50%; background: rgba(255,255,255,0.5); transform: scale(0);
+    animation: rippleFx .6s ease-out forwards; pointer-events:none;
+  }
+  @keyframes rippleFx{ to{ transform: scale(3); opacity:0; } }
   .btn-primary{ background: linear-gradient(95deg, var(--blue), var(--purple)); color:#fff; }
   .btn-primary:hover{ transform: translateY(-3px); box-shadow: 0 14px 28px -10px rgba(91,110,245,0.5); }
   .btn-ghost{ background: transparent; color: var(--text); border-color: var(--border-hover); }
@@ -92,7 +117,7 @@
   .icon-btn:hover{ border-color: var(--purple); color: var(--purple); transform: translateY(-2px); }
 
   /* HERO */
-  .hero{ padding-top: 168px; padding-bottom: 80px; }
+  .hero{ padding-top: 168px; padding-bottom: 80px; position:relative; overflow:hidden; }
   .hero-grid{ display:grid; grid-template-columns: 1.15fr 0.85fr; gap: 60px; align-items:center; }
 
   .fade-up{ opacity:0; transform: translateY(20px); animation: fadeUp .8s cubic-bezier(.2,.7,.3,1) forwards; }
@@ -110,7 +135,13 @@
   .social-row{ display:flex; gap:10px; margin-top:26px; }
 
   .stat-strip{ display:flex; gap:40px; margin-top:44px; padding-top:32px; border-top:1px solid var(--border); flex-wrap:wrap; }
+  .stat{ transition: transform .3s ease; cursor:default; }
+  .stat:hover{ transform: translateY(-4px); }
   .stat b{ display:block; font-family:'Poppins', sans-serif; font-size:26px; font-weight:700; }
+  .stat b.pop{ animation: statPop .5s ease, statGlow 2.6s ease-in-out .5s infinite; }
+  @keyframes statPop{ 0%{ transform: scale(1); } 40%{ transform: scale(1.18); text-shadow: 0 0 18px rgba(155,107,240,0.6); } 100%{ transform: scale(1); } }
+  @keyframes statGlow{ 0%,100%{ filter: drop-shadow(0 0 0 rgba(155,107,240,0)); } 50%{ filter: drop-shadow(0 0 10px rgba(155,107,240,0.45)); } }
+  .stat:hover b{ animation: statPop .4s ease; }
   .stat span{ font-size:11.5px; color: var(--text-muted); text-transform:uppercase; letter-spacing:0.06em; }
 
   /* PHOTO */
@@ -209,12 +240,20 @@
 
   /* SKILLS */
   .skill-groups{ display:grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
-  .skill-group{ background: var(--surface); border:1px solid var(--border); border-radius:16px; padding:24px; transition: border-color .3s ease; }
+  .skill-group{ background: var(--surface); border:1px solid var(--border); border-radius:16px; padding:24px; transition: border-color .3s ease; position:relative; overflow:hidden; }
   .skill-group:hover{ border-color: var(--border-hover); }
+  .skill-group::after{
+    content:''; position:absolute; top:0; left:-150%; width:60%; height:100%;
+    background: linear-gradient(100deg, transparent, rgba(155,107,240,0.12), transparent);
+    transition: left .7s ease; pointer-events:none;
+  }
+  .skill-group:hover::after{ left:150%; }
   .skill-group h3{ font-family:'Inter', sans-serif; font-size:12px; font-weight:700; color: var(--text-muted); text-transform:uppercase; letter-spacing:0.07em; margin-bottom:18px; }
   .skill-icon-grid{ display:grid; grid-template-columns: repeat(2, 1fr); gap:8px; }
   .skill-icon-tile{ display:flex; align-items:center; gap:10px; padding:9px 4px; border-radius:8px; transition: all .2s ease; }
   .skill-icon-tile:hover{ background: rgba(255,255,255,0.05); transform: translateX(3px); }
+  .skill-icon-tile:hover img, .skill-icon-tile:hover .mono-badge{ animation: iconBounce .5s ease; }
+  @keyframes iconBounce{ 0%,100%{ transform: scale(1) rotate(0deg); } 50%{ transform: scale(1.25) rotate(-8deg); } }
   .skill-icon-tile img{ width:20px; height:20px; object-fit:contain; flex-shrink:0; }
   .skill-icon-tile .mono-badge{
     width:20px; height:20px; border-radius:5px; display:flex; align-items:center; justify-content:center;
@@ -361,7 +400,9 @@
     width:40px; height:40px; border-radius:12px; display:flex; align-items:center; justify-content:center;
     background: linear-gradient(135deg, rgba(91,110,245,0.18), rgba(155,107,240,0.1)); color: var(--purple);
     font-weight:700; font-size:11px; margin-bottom:18px; font-family:'Poppins', sans-serif;
+    animation: badgeFloat 3.6s ease-in-out infinite;
   }
+  @keyframes badgeFloat{ 0%,100%{ transform: translateY(0); } 50%{ transform: translateY(-5px); } }
   .cert-card h3{ font-size:14.5px; font-weight:600; margin-bottom:4px; line-height:1.4; }
   .cert-card .issuer{ font-size:12px; color: var(--text-muted); margin-bottom:20px; }
 
@@ -384,10 +425,20 @@
   .achieve-grid{ display:grid; grid-template-columns: repeat(4, 1fr); gap:16px; }
   .achieve-card{
     background: var(--surface); border:1px solid var(--border); border-radius:16px; padding:22px 14px; text-align:center;
-    transition: all .3s ease;
+    transition: all .3s ease; opacity:0; transform: translateY(18px);
   }
-  .achieve-card:hover{ border-color: var(--purple); transform: translateY(-4px); }
-  .achieve-emoji{ font-size:28px; margin-bottom:12px; }
+  .achieve-card.revealed, .achieve-grid.revealed .achieve-card{ opacity:1; transform: translateY(0); }
+  .achieve-grid.revealed .achieve-card:nth-child(1){ transition-delay: .05s; }
+  .achieve-grid.revealed .achieve-card:nth-child(2){ transition-delay: .15s; }
+  .achieve-grid.revealed .achieve-card:nth-child(3){ transition-delay: .25s; }
+  .achieve-grid.revealed .achieve-card:nth-child(4){ transition-delay: .35s; }
+  .achieve-card:hover{ border-color: var(--purple); transform: translateY(-4px) scale(1.03); }
+  .achieve-emoji{ font-size:28px; margin-bottom:12px; transition: transform .3s ease; display:inline-block; animation: emojiWiggle 4s ease-in-out infinite; }
+  .achieve-card:nth-child(2) .achieve-emoji{ animation-delay: .5s; }
+  .achieve-card:nth-child(3) .achieve-emoji{ animation-delay: 1s; }
+  .achieve-card:nth-child(4) .achieve-emoji{ animation-delay: 1.5s; }
+  @keyframes emojiWiggle{ 0%,100%{ transform: rotate(0deg); } 10%{ transform: rotate(-8deg); } 20%{ transform: rotate(8deg); } 30%{ transform: rotate(0deg); } }
+  .achieve-card:hover .achieve-emoji{ animation: none; transform: scale(1.15) rotate(-6deg); }
   .achieve-card span{ font-size:12.5px; font-weight:600; color: var(--text); line-height:1.4; display:block; }
   @media (max-width:900px){ .achieve-grid{ grid-template-columns: repeat(2,1fr); } }
 
@@ -423,6 +474,8 @@
     background: linear-gradient(135deg, rgba(91,110,245,0.12), rgba(236,111,192,0.06));
     border:1px solid var(--border); border-radius:24px; padding:56px; text-align:center;
   }
+  .contact-card .section-title{ margin-inline:auto; }
+  .contact-card .section-title::after{ left:50%; transform: translateX(-50%); }
   .contact-links{ display:flex; justify-content:center; gap:14px; flex-wrap:wrap; margin-top:30px; }
 
   footer{ border-top:1px solid var(--border); padding:30px 0; text-align:center; color: var(--text-muted); font-size:13px; position:relative; z-index:1; }
@@ -495,13 +548,14 @@
 
 <!-- HERO -->
 <section class="hero" id="home">
+  <div class="particles" id="particles"></div>
   <div class="wrap hero-grid">
     <div>
       <h1 class="fade-up" style="animation-delay:.05s;">Rohan Teja<br>Nallapaneni</h1>
       <div class="role-line fade-up" style="animation-delay:.15s;">
         <span class="grad-text role-cycle-text">Full-Stack Java Developer</span><span class="cursor-blink"></span>
       </div>
-      <p class="hero-meta fade-up" style="animation-delay:.25s;"><b>Computer Science &amp; Engineering</b> student at SRM Institute of Science &amp; Technology · CGPA 8.64/10</p>
+      <p class="hero-meta fade-up" style="animation-delay:.25s;"><b>Computer Science &amp; Engineering</b> graduate from SRM Institute of Science &amp; Technology · CGPA 8.64/10</p>
       <div class="btn-row fade-up" style="animation-delay:.35s;">
         <a href="./RohanTeja_Resume.pdf" class="btn btn-primary" download>↓ Download Résumé</a>
         <a href="#contact" class="btn btn-ghost">✉ Contact Me</a>
@@ -547,7 +601,7 @@
     </div>
     <div class="about-grid">
       <div class="reveal">
-        <p>I'm a final-year B.Tech Computer Science student at SRM Institute of Science and Technology, building production-style web applications across the entire stack — React and Tailwind on the front end, Spring Boot and secure REST APIs on the back end, MySQL underneath, deployed with Docker and AWS.</p>
+        <p>I'm a B.Tech Computer Science graduate from SRM Institute of Science and Technology, building production-style web applications across the entire stack — React and Tailwind on the front end, Spring Boot and secure REST APIs on the back end, MySQL underneath, deployed with Docker and AWS.</p>
         <p>Alongside that, I've independently built and deployed three machine-learning-driven applications — from Android malware detection to health diagnostics — taking each from a trained model to a live, usable web app.</p>
       </div>
       <div class="quick-facts reveal">
@@ -652,11 +706,11 @@
           <div class="view-hint">🔍 View full details</div>
         </div>
         <div class="proj-body">
-          <div class="proj-num grad-text">01 · Machine Learning</div>
+          <div class="proj-num grad-text">01 · Machine Learning · Network Security</div>
           <h3>Android Malware Detection System</h3>
-          <p>Classifies malicious vs. benign Android apps using behavioral and permission-based features, with Random Forest, CNN, and hybrid classification models integrated into a Flask web app for real-time APK analysis.</p>
-          <div class="proj-highlight">Multi-model ML pipeline</div>
-          <div class="tech-tags"><span>Python</span><span>Flask</span><span>Deep Learning</span></div>
+          <p>Built and deployed a full-stack ML web application that classifies Android network traffic as benign or malicious, using a Random Forest classifier trained on 10 key network-traffic features, served through a Flask REST API.</p>
+          <div class="proj-highlight">Real-time traffic classification</div>
+          <div class="tech-tags"><span>Python</span><span>Flask</span><span>Scikit-learn</span></div>
           <div class="card-btns">
             <a href="https://android-malware-detection-using-static-ruxt.onrender.com" target="_blank" rel="noopener" class="btn btn-primary btn-sm">Live Demo</a>
             <a href="https://github.com/rohanteja09/Android-Malware-Detection-using-Static-and-Dynamic-Analysis" target="_blank" rel="noopener" class="btn btn-ghost btn-sm">GitHub</a>
@@ -680,11 +734,11 @@
           <div class="view-hint">🔍 View full details</div>
         </div>
         <div class="proj-body">
-          <div class="proj-num grad-text">02 · Deep Learning</div>
+          <div class="proj-num grad-text">02 · Full-Stack Java · Healthcare</div>
           <h3>Web-Based Health Diagnosis System</h3>
-          <p>A CNN-based diagnostic system combined with ontology-based medical reasoning to identify diseases and detect comorbidities from clinical data.</p>
-          <div class="proj-highlight">Sub-2-second inference</div>
-          <div class="tech-tags"><span>Python</span><span>CNN</span><span>Ontology Reasoning</span></div>
+          <p>A full-stack health diagnosis web application built with Java, JSP, and Servlets following MVC architecture — supporting dataset upload, preprocessing, and CNN/LSTM-based disease prediction, deployed via Docker on Render with a TiDB Cloud database.</p>
+          <div class="proj-highlight">Migrated to TiDB Cloud + Docker</div>
+          <div class="tech-tags"><span>Java</span><span>JSP / Servlets</span><span>MySQL</span><span>Docker</span></div>
           <div class="card-btns">
             <a href="https://web-based-health-diagnosis-system-rohan.onrender.com" target="_blank" rel="noopener" class="btn btn-primary btn-sm">Live Demo</a>
             <a href="https://github.com/rohanteja09/Web-based-Health-Diagnosis-System" target="_blank" rel="noopener" class="btn btn-ghost btn-sm">GitHub</a>
@@ -716,8 +770,8 @@
         <div class="proj-body">
           <div class="proj-num grad-text">03 · Data Science</div>
           <h3>Water Quality Prediction System</h3>
-          <p>A machine learning pipeline analyzing physicochemical parameters of Ganga River water — pH, dissolved oxygen, turbidity, and more — to identify water quality patterns from historical data.</p>
-          <div class="proj-highlight">11 physicochemical parameters</div>
+          <p>A machine learning system predicting Ganga River water quality from physicochemical parameters — pH, dissolved oxygen, BOD, turbidity, conductivity — using Scikit-learn classification models, with an 80/20 train-test split evaluated on accuracy, precision, and recall.</p>
+          <div class="proj-highlight">80/20 train-test evaluation</div>
           <div class="tech-tags"><span>Python</span><span>Scikit-learn</span><span>Pandas</span></div>
           <div class="card-btns">
             <a href="https://water-probability-prediction-system-mft5.onrender.com/" target="_blank" rel="noopener" class="btn btn-primary btn-sm">Live Demo</a>
@@ -949,6 +1003,9 @@
 </footer>
 
 <script>
+  if ('scrollRestoration' in history) { history.scrollRestoration = 'manual'; }
+  window.scrollTo(0, 0);
+
   const header = document.getElementById('siteHeader');
   window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 12));
 
@@ -977,27 +1034,29 @@
   revealEls.forEach(el => io.observe(el));
 
   const counters = document.querySelectorAll('.counter');
-  const countObs = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (!entry.isIntersecting) return;
-      const el = entry.target;
-      const target = parseFloat(el.dataset.target);
-      const isDecimal = el.dataset.decimal === 'true';
-      const duration = 1200;
-      const startTime = performance.now();
-      function tick(now){
-        const progress = Math.min((now - startTime) / duration, 1);
-        const eased = 1 - Math.pow(1 - progress, 3);
-        const value = target * eased;
-        el.textContent = isDecimal ? value.toFixed(2) : Math.round(value);
-        if (progress < 1) requestAnimationFrame(tick);
-        else el.textContent = isDecimal ? target.toFixed(2) : target;
-      }
-      requestAnimationFrame(tick);
-      countObs.unobserve(el);
-    });
-  }, { threshold: 0.5 });
-  counters.forEach(c => countObs.observe(c));
+  function initCounters(){
+    const countObs = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const el = entry.target;
+        const target = parseFloat(el.dataset.target);
+        const isDecimal = el.dataset.decimal === 'true';
+        const duration = 1200;
+        const startTime = performance.now();
+        function tick(now){
+          const progress = Math.min((now - startTime) / duration, 1);
+          const eased = 1 - Math.pow(1 - progress, 3);
+          const value = target * eased;
+          el.textContent = isDecimal ? value.toFixed(2) : Math.round(value);
+          if (progress < 1) requestAnimationFrame(tick);
+          else { el.textContent = isDecimal ? target.toFixed(2) : target; el.classList.add('pop'); }
+        }
+        requestAnimationFrame(tick);
+        countObs.unobserve(el);
+      });
+    }, { threshold: 0.5 });
+    counters.forEach(c => countObs.observe(c));
+  }
 
   // Role text typewriter cycle
   const roleEl = document.querySelector('.role-cycle-text');
@@ -1027,6 +1086,7 @@
   if (skipBoot && bootLoader) {
     bootLoader.remove();
     document.documentElement.classList.remove('loading');
+    initCounters();
   } else {
   const bootLines = [
     { html: '<span class="kw">const</span> <span class="var">developer</span> = {', cls:'cmd' },
@@ -1044,6 +1104,7 @@
       setTimeout(() => {
         bootLoader.classList.add('hide');
         document.documentElement.classList.remove('loading');
+        initCounters();
         setTimeout(() => bootLoader.remove(), 700);
       }, 350);
       return;
@@ -1059,7 +1120,7 @@
     setTimeout(() => { div.querySelector('.boot-caret')?.remove(); renderBootLine(); }, 420);
   }
   if (bootBody) setTimeout(renderBootLine, 300);
-  if (!bootBody) document.documentElement.classList.remove('loading');
+  if (!bootBody) { document.documentElement.classList.remove('loading'); initCounters(); }
   }
 
   // Scroll progress bar
@@ -1077,6 +1138,62 @@
     if (backToTop) backToTop.classList.toggle('show', window.scrollY > 600);
   });
   backToTop?.addEventListener('click', () => window.scrollTo({ top:0, behavior:'smooth' }));
+
+  // Floating particles in hero
+  const particlesEl = document.getElementById('particles');
+  if (particlesEl && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const count = window.innerWidth < 700 ? 12 : 24;
+    for (let i = 0; i < count; i++) {
+      const p = document.createElement('div');
+      p.className = 'particle';
+      p.style.left = Math.random() * 100 + '%';
+      p.style.bottom = '-10px';
+      p.style.setProperty('--drift', (Math.random() * 80 - 40) + 'px');
+      p.style.animationDuration = (8 + Math.random() * 10) + 's';
+      p.style.animationDelay = (Math.random() * 10) + 's';
+      p.style.width = p.style.height = (2 + Math.random() * 3) + 'px';
+      particlesEl.appendChild(p);
+    }
+  }
+
+  // Button ripple + magnetic hover on primary buttons
+  document.querySelectorAll('.btn').forEach(btn => {
+    btn.addEventListener('click', function(e){
+      const r = this.getBoundingClientRect();
+      const fx = document.createElement('span');
+      fx.className = 'ripple-fx';
+      const size = Math.max(r.width, r.height);
+      fx.style.width = fx.style.height = size + 'px';
+      fx.style.left = (e.clientX - r.left - size/2) + 'px';
+      fx.style.top = (e.clientY - r.top - size/2) + 'px';
+      this.appendChild(fx);
+      setTimeout(() => fx.remove(), 600);
+    });
+  });
+  if (window.matchMedia('(pointer:fine)').matches && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.querySelectorAll('.btn-primary').forEach(btn => {
+      btn.addEventListener('mousemove', function(e){
+        const r = this.getBoundingClientRect();
+        const x = (e.clientX - r.left - r.width/2) * 0.15;
+        const y = (e.clientY - r.top - r.height/2) * 0.25;
+        this.style.transform = `translate(${x}px, ${y}px) translateY(-3px)`;
+      });
+      btn.addEventListener('mouseleave', function(){ this.style.transform = ''; });
+    });
+  }
+
+  // Hero photo parallax on scroll
+  const photoWrap = document.querySelector('.photo-ring-wrap');
+  const heroSection = document.querySelector('.hero');
+  if (photoWrap && heroSection && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    window.addEventListener('scroll', () => {
+      const rect = heroSection.getBoundingClientRect();
+      if (rect.bottom > 0 && rect.top < window.innerHeight) {
+        const progress = Math.min(Math.max(-rect.top / rect.height, 0), 1);
+        photoWrap.style.transform = `translateY(${progress * 40}px)`;
+      }
+    });
+  }
 
   // Cursor glow (desktop only)
   const glow = document.getElementById('cursorGlow');
@@ -1122,47 +1239,48 @@
   // Project detail modal data
   const PROJECTS = {
     malware: {
-      cat: 'Machine Learning · Cyber Security',
+      cat: 'Machine Learning · Network Security',
       title: 'Android Malware Detection System',
-      overview: 'An intelligent detection system that classifies Android applications as malicious or benign by analyzing behavioral patterns and permission requests, combining multiple ML approaches into one deployed web app for real-time analysis.',
-      arch: ['APK Upload', 'Feature Extraction', 'ML Models (RF / CNN / Hybrid)', 'Flask API', 'Result'],
+      overview: 'A full-stack machine learning web application that classifies Android network traffic as benign or malicious, using a Random Forest classifier trained on 10 key network-traffic features and served in real time through a Flask REST API.',
+      arch: ['Network Traffic Input', 'RobustScaler Normalization', 'Random Forest Classifier', 'Flask REST API', 'Prediction Result'],
       features: [
-        'Real-time APK analysis through a Flask web interface',
-        'Multi-model pipeline: Random Forest, CNN, and hybrid classifiers',
-        'Behavioral and permission-based feature extraction',
-        'Deployed and publicly accessible for live testing'
+        'Flask REST API with /predict, /benign, /malware, and /generate-live endpoints',
+        'RobustScaler-based feature normalization to handle outlier-heavy traffic data',
+        'Random Forest classifier trained on 10 key network-traffic features',
+        'Deployed on Render using Gunicorn with a GitHub-based deployment workflow'
       ],
-      tech: ['Python', 'Flask', 'Scikit-learn', 'TensorFlow/Keras', 'Random Forest', 'CNN'],
+      tech: ['Python', 'Flask', 'Scikit-learn', 'Random Forest', 'Gunicorn', 'HTML/CSS/JS'],
       challenges: [
-        'Balancing detection accuracy against false-positive rate across varied APK samples',
-        'Processing large-scale behavioral datasets efficiently within a web request cycle'
+        'Handling outlier-heavy network traffic data during feature normalization',
+        'Designing REST endpoints that support both live and on-demand classification'
       ],
       future: [
-        'Extend detection to obfuscated and polymorphic malware variants',
-        'Add on-device/edge inference for faster, offline scanning'
+        'Extend the model to detect additional attack/traffic categories beyond binary classification',
+        'Add real-time streaming traffic ingestion instead of batch prediction requests'
       ],
       live: 'https://android-malware-detection-using-static-ruxt.onrender.com',
       github: 'https://github.com/rohanteja09/Android-Malware-Detection-using-Static-and-Dynamic-Analysis'
     },
     health: {
-      cat: 'Deep Learning · Healthcare',
+      cat: 'Full-Stack Java · Healthcare',
       title: 'Web-Based Health Diagnosis System',
-      overview: 'A diagnostic system that combines Convolutional Neural Networks with ontology-based medical reasoning to identify diseases and flag potential comorbidities from clinical data, aimed at fast, AI-assisted clinical decision support.',
-      arch: ['Clinical Data Input', 'CNN Model', 'Ontology Reasoning Engine', 'Diagnosis Output'],
+      overview: 'A full-stack health diagnosis web application built with Java, JSP, and Servlets following MVC architecture, supporting dataset upload, preprocessing, and ML-based disease prediction — migrated from local MySQL to TiDB Cloud and containerized with Docker for deployment.',
+      arch: ['Dataset Upload', 'Preprocessing', 'CNN/LSTM Model', 'Servlet (MVC)', 'JSP View', 'TiDB Cloud'],
       features: [
-        'CNN-based classification of clinical data',
-        'Ontology-based reasoning layer for comorbidity detection',
-        'Sub-2-second inference time',
-        'Web interface for accessible diagnosis support'
+        'Dataset management and preprocessing modules',
+        'CNN/LSTM-based disease prediction',
+        'Performance analysis module comparing accuracy, precision, recall, and F1-score',
+        'Database migrated from local MySQL to TiDB Cloud',
+        'Containerized with Docker and deployed on Render'
       ],
-      tech: ['Python', 'CNN', 'Deep Learning', 'Ontology Reasoning', 'Flask'],
+      tech: ['Java', 'JSP', 'Servlets', 'Spring', 'MySQL / TiDB Cloud', 'Docker'],
       challenges: [
-        'Integrating symbolic ontology reasoning with a deep learning model\'s outputs',
-        'Achieving reliable performance on a limited medical dataset'
+        'Resolving JDBC connectivity and dependency issues while migrating to TiDB Cloud',
+        'Structuring the MVC flow cleanly across Servlets, JSP views, and the prediction module'
       ],
       future: [
-        'Expand disease and comorbidity coverage',
-        'Pursue clinical validation with real-world patient data'
+        'Add authentication and role-based access for clinicians vs. patients',
+        'Expand the performance analysis module with cross-validation across more models'
       ],
       live: 'https://web-based-health-diagnosis-system-rohan.onrender.com',
       github: 'https://github.com/rohanteja09/Web-based-Health-Diagnosis-System'
@@ -1170,16 +1288,19 @@
     water: {
       cat: 'Data Science · Environment',
       title: 'Water Quality Prediction System',
-      overview: 'A machine learning pipeline built to analyze physicochemical parameters of Ganga River water — pH, dissolved oxygen, turbidity, and more — to identify water quality patterns from historical data through a clean web interface.',
-      arch: ['Historical Water Data', 'Preprocessing', 'ML Model (Scikit-learn)', 'Prediction Interface'],
+      overview: 'A machine learning system predicting Ganga River water quality from physicochemical parameters — pH, dissolved oxygen, BOD, turbidity, and conductivity — using Scikit-learn classification models, with the full training pipeline documented in a Jupyter notebook.',
+      arch: ['Historical Water Data', 'Cleaning & Feature Selection', '80/20 Train-Test Split', 'Scikit-learn Model', 'Prediction Interface'],
       features: [
-        'Analysis across 11 physicochemical parameters',
-        'Model trained and validated using Scikit-learn and Pandas',
-        'Clean, responsive HTML/CSS/JS frontend'
+        'Classification across pH, dissolved oxygen, BOD, turbidity, and conductivity',
+        'Data cleaning and feature selection before training',
+        '80/20 train-test split evaluated on accuracy, precision, and recall',
+        'Responsive HTML/CSS/JS frontend demonstrating the end-to-end workflow',
+        'Full training pipeline documented in a Jupyter notebook'
       ],
       tech: ['Python', 'Scikit-learn', 'Pandas', 'HTML/CSS/JS'],
       challenges: [
-        'Handling inconsistent historical water quality records during preprocessing'
+        'Handling inconsistent historical water quality records during preprocessing',
+        'Selecting the best-performing algorithm across accuracy, precision, and recall trade-offs'
       ],
       future: [
         'Connect the trained model to the live backend for real-time predictions (currently frontend-only on the deployed demo)',
