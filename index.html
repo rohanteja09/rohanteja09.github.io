@@ -282,6 +282,7 @@
   .project-card:nth-child(2){ transition-delay: .12s; }
   .project-card:nth-child(3){ transition-delay: .24s; }
   .project-card:nth-child(4){ transition-delay: .36s; }
+  .project-card:nth-child(5){ transition-delay: .48s; }
   .project-card.revealed{ opacity:1; transform:translateY(0); }
   .project-card:hover{ border-color: transparent; box-shadow: 0 30px 70px -25px rgba(91,110,245,0.35); }
   .project-card:nth-child(even){ direction: rtl; }
@@ -351,6 +352,10 @@
   .orbit-spin.r2{ animation-duration: 9s; animation-direction: reverse; }
   @keyframes orbitSpin{ to{ transform: rotate(360deg); } }
   .orbit-dot{ animation: nodePulse 2.4s ease-in-out infinite; }
+  .plot-flag{ animation: flagPulse 2.4s ease-in-out infinite; }
+  @keyframes flagPulse{ 0%,100%{ opacity:0.15; } 50%{ opacity:0.4; } }
+  .proj-problem{ font-size:13px; color: var(--text-muted); margin-top:14px; line-height:1.6; }
+  .proj-problem b{ color: var(--text); font-weight:600; }
   @keyframes waveMove{ to{ transform: translateX(-100px); } }
 
   @media (max-width:820px){
@@ -577,7 +582,7 @@
         </a>
       </div>
       <div class="stat-strip fade-up" style="animation-delay:.55s;">
-        <div class="stat"><b class="grad-text counter" data-target="4">0</b><span>Live Projects</span></div>
+        <div class="stat"><b class="grad-text counter" data-target="5">0</b><span>Live Projects</span></div>
         <div class="stat"><b class="grad-text counter" data-target="4">0</b><span>Certifications</span></div>
         <div class="stat"><b class="grad-text counter" data-target="8.64" data-decimal="true">0</b><span>CGPA</span></div>
       </div>
@@ -607,7 +612,7 @@
     <div class="about-grid">
       <div class="reveal">
         <p>I'm a B.Tech Computer Science graduate from SRM Institute of Science and Technology, building production-style web applications across the entire stack — React and Tailwind on the front end, Spring Boot and secure REST APIs on the back end, MySQL underneath, deployed with Docker and AWS.</p>
-        <p>Alongside that, I've independently built and deployed four AI and machine-learning-driven applications — from Android malware detection to health diagnostics to a full-stack AI assistant on Cloudflare Workers — taking each from a trained model or agent to a live, usable web app.</p>
+        <p>Alongside that, I've independently built and deployed five AI and full-stack applications — from Android malware detection to health diagnostics to an AP layout-plan compliance checker to a full-stack AI assistant on Cloudflare Workers — taking each from a trained model or rules engine to a live, usable web app.</p>
       </div>
       <div class="quick-facts reveal">
         <div class="fact-card"><div class="fact-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c0 1.5 3 3 6 3s6-1.5 6-3v-5"/></svg></div><div><b>Education</b><span>B.Tech CSE, SRM IST — CGPA 8.64</span></div></div>
@@ -678,7 +683,7 @@
     <div class="section-head reveal">
       <div class="eyebrow"><span>Projects</span></div>
       <h2 class="section-title">Things I've shipped</h2>
-      <p class="section-sub">Four end-to-end applications, each deployed and live. Click a preview to see full details.</p>
+      <p class="section-sub">Five end-to-end applications, each deployed and live. Click a preview to see full details.</p>
     </div>
 
     <div class="filter-row reveal">
@@ -688,6 +693,76 @@
     </div>
 
     <div class="project-list">
+      <div class="project-card" data-category="ai-ml" data-project="nrtai">
+        <div class="proj-visual" onclick="openProjectModal('nrtai')">
+          <div class="browser-chrome">
+            <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+            <span class="browser-url">nrt-ai.rohan-nallapaneni.workers.dev</span>
+          </div>
+          <div class="live-badge"><span class="dot"></span>LIVE</div>
+          <div class="art-frame">
+            <svg viewBox="0 0 300 160" aria-hidden="true">
+              <circle cx="150" cy="80" r="45" fill="none" stroke="#5b6ef5" stroke-width="1.2" stroke-dasharray="4 5" opacity="0.45"/>
+              <circle cx="150" cy="80" r="66" fill="none" stroke="#9b6bf0" stroke-width="1.2" stroke-dasharray="3 6" opacity="0.35"/>
+              <circle cx="150" cy="80" r="15" fill="#5b6ef5"/>
+              <g class="orbit-spin"><circle class="orbit-dot" cx="195" cy="80" r="4" fill="#4fd1a5"/></g>
+              <g class="orbit-spin r2"><circle class="orbit-dot" cx="150" cy="14" r="3" fill="#ec6fc0"/></g>
+            </svg>
+          </div>
+          <div class="view-hint">🔍 View full details</div>
+        </div>
+        <div class="proj-body">
+          <div class="proj-num grad-text">01 · Full-Stack AI · Cloud</div>
+          <h3>NRT AI — Free, Always-On AI Assistant</h3>
+          <p>A free, always-on AI assistant that chats, searches and browses the web, generates and understands images, writes and runs code, and takes voice input — built on Cloudflare Workers AI with a real-time 3D space scene background.</p>
+          <p class="proj-problem"><b>Real-world problem:</b> Free AI demos are usually rate-limited trials, paid APIs, or servers that spin down and cold-start. NRT AI proves a fully-featured assistant can stay live and free for anyone, indefinitely, entirely on Cloudflare's free tier.</p>
+          <div class="proj-highlight">No cold start, no server billing</div>
+          <div class="tech-tags"><span>Next.js</span><span>TypeScript</span><span>Cloudflare Workers</span><span>Workers AI</span></div>
+          <div class="card-btns">
+            <a href="https://nrt-ai.rohan-nallapaneni.workers.dev" target="_blank" rel="noopener" class="btn btn-primary btn-sm">Live Demo</a>
+            <a href="https://github.com/rohanteja09/nrt-ai" target="_blank" rel="noopener" class="btn btn-ghost btn-sm">GitHub</a>
+            <button class="btn btn-ghost btn-sm" onclick="openProjectModal('nrtai')">Details</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card" data-category="compliance" data-project="layoutiq">
+        <div class="proj-visual" onclick="openProjectModal('layoutiq')">
+          <div class="browser-chrome">
+            <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+            <span class="browser-url">layoutiqsvrt.rohan-nallapaneni.workers.dev</span>
+          </div>
+          <div class="live-badge"><span class="dot"></span>LIVE</div>
+          <div class="art-frame">
+            <svg viewBox="0 0 300 160" aria-hidden="true">
+              <rect x="20" y="20" width="260" height="120" fill="none" stroke="#5b6ef5" stroke-width="1.2" opacity="0.4"/>
+              <line x1="85" y1="20" x2="85" y2="140" stroke="#5b6ef5" stroke-width="1" opacity="0.3"/>
+              <line x1="150" y1="20" x2="150" y2="140" stroke="#5b6ef5" stroke-width="1" opacity="0.3"/>
+              <line x1="215" y1="20" x2="215" y2="140" stroke="#5b6ef5" stroke-width="1" opacity="0.3"/>
+              <line x1="20" y1="60" x2="280" y2="60" stroke="#5b6ef5" stroke-width="1" opacity="0.3"/>
+              <line x1="20" y1="100" x2="280" y2="100" stroke="#5b6ef5" stroke-width="1" opacity="0.3"/>
+              <rect class="plot-flag" x="150" y="60" width="65" height="40" fill="#ec6fc0" opacity="0.25"/>
+              <circle cx="248" cy="40" r="14" fill="#4fd1a5"/>
+              <path d="M242,40 l4,5 l9,-10" fill="none" stroke="#0c1120" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="view-hint">🔍 View full details</div>
+        </div>
+        <div class="proj-body">
+          <div class="proj-num grad-text">02 · Compliance Tech · Real Estate</div>
+          <h3>LayoutIQ — AP Layout Compliance Checker</h3>
+          <p>A compliance checker for Licensed Town Planners preparing layout plans for Andhra Pradesh's DTCP and urban development authorities — parses APDPMS-generated layout plan PDFs, or takes manual plot entry, and validates plot dimensions, road widths, and open-space reservations against the selected authority's rules before submission.</p>
+          <p class="proj-problem"><b>Real-world problem:</b> LTPs are legally accountable for the layout plans they certify, and DTCP/UDA rejections over compliance issues cost weeks of resubmission. LayoutIQ catches violations before submission instead of after.</p>
+          <div class="proj-highlight">Covers all AP DTCP + UDA authorities</div>
+          <div class="tech-tags"><span>Next.js</span><span>TypeScript</span><span>PDF Parsing</span><span>Cloudflare Workers</span></div>
+          <div class="card-btns">
+            <a href="https://layoutiqsvrt.rohan-nallapaneni.workers.dev" target="_blank" rel="noopener" class="btn btn-primary btn-sm">Live Demo</a>
+            <a href="https://github.com/rohanteja09/layoutiq" target="_blank" rel="noopener" class="btn btn-ghost btn-sm">GitHub</a>
+            <button class="btn btn-ghost btn-sm" onclick="openProjectModal('layoutiq')">Details</button>
+          </div>
+        </div>
+      </div>
+
       <div class="project-card" data-category="ai-ml cyber" data-project="malware">
         <div class="proj-visual" onclick="openProjectModal('malware')">
           <div class="browser-chrome">
@@ -711,9 +786,10 @@
           <div class="view-hint">🔍 View full details</div>
         </div>
         <div class="proj-body">
-          <div class="proj-num grad-text">01 · Machine Learning · Network Security</div>
+          <div class="proj-num grad-text">03 · Machine Learning · Network Security</div>
           <h3>Android Malware Detection System</h3>
           <p>Built and deployed a full-stack ML web application that classifies Android network traffic as benign or malicious, using a Random Forest classifier trained on 10 key network-traffic features, served through a Flask REST API.</p>
+          <p class="proj-problem"><b>Real-world problem:</b> Signature-based antivirus struggles to catch new or obfuscated Android malware. This tool classifies network traffic behavior in real time with a trained ML model, catching malicious apps that signature matching misses.</p>
           <div class="proj-highlight">Real-time traffic classification</div>
           <div class="tech-tags"><span>Python</span><span>Flask</span><span>Scikit-learn</span></div>
           <div class="card-btns">
@@ -739,9 +815,10 @@
           <div class="view-hint">🔍 View full details</div>
         </div>
         <div class="proj-body">
-          <div class="proj-num grad-text">02 · Full-Stack Java · Healthcare</div>
+          <div class="proj-num grad-text">04 · Full-Stack Java · Healthcare</div>
           <h3>Web-Based Health Diagnosis System</h3>
           <p>A full-stack health diagnosis web application built with Java, JSP, and Servlets following MVC architecture — supporting dataset upload, preprocessing, and CNN/LSTM-based disease prediction, deployed via Docker on Render with a TiDB Cloud database.</p>
+          <p class="proj-problem"><b>Real-world problem:</b> Clinics without in-house specialists or fast lab turnaround need a way to get a preliminary diagnosis quickly. This system lets a clinician upload patient data and get an ML-assisted diagnosis instantly.</p>
           <div class="proj-highlight">Migrated to TiDB Cloud + Docker</div>
           <div class="tech-tags"><span>Java</span><span>JSP / Servlets</span><span>MySQL</span><span>Docker</span></div>
           <div class="card-btns">
@@ -773,47 +850,16 @@
           <div class="view-hint">🔍 View full details</div>
         </div>
         <div class="proj-body">
-          <div class="proj-num grad-text">03 · Data Science</div>
+          <div class="proj-num grad-text">05 · Data Science</div>
           <h3>Water Quality Prediction System</h3>
           <p>A machine learning system predicting Ganga River water quality from physicochemical parameters — pH, dissolved oxygen, BOD, turbidity, conductivity — using Scikit-learn classification models, with an 80/20 train-test split evaluated on accuracy, precision, and recall.</p>
+          <p class="proj-problem"><b>Real-world problem:</b> Lab-testing river water for pollution and potability is slow and resource-intensive for monitoring agencies. This system predicts water quality directly from physicochemical readings, enabling faster, cheaper screening.</p>
           <div class="proj-highlight">80/20 train-test evaluation</div>
           <div class="tech-tags"><span>Python</span><span>Scikit-learn</span><span>Pandas</span></div>
           <div class="card-btns">
             <a href="https://water-probability-prediction-system-mft5.onrender.com/" target="_blank" rel="noopener" class="btn btn-primary btn-sm">Live Demo</a>
             <a href="https://github.com/rohanteja09/Water_probability_prediction_system" target="_blank" rel="noopener" class="btn btn-ghost btn-sm">GitHub</a>
             <button class="btn btn-ghost btn-sm" onclick="openProjectModal('water')">Details</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="project-card" data-category="ai-ml" data-project="nrtai">
-        <div class="proj-visual" onclick="openProjectModal('nrtai')">
-          <div class="browser-chrome">
-            <span class="dot"></span><span class="dot"></span><span class="dot"></span>
-            <span class="browser-url">nrt-ai.rohan-nallapaneni.workers.dev</span>
-          </div>
-          <div class="live-badge"><span class="dot"></span>LIVE</div>
-          <div class="art-frame">
-            <svg viewBox="0 0 300 160" aria-hidden="true">
-              <circle cx="150" cy="80" r="45" fill="none" stroke="#5b6ef5" stroke-width="1.2" stroke-dasharray="4 5" opacity="0.45"/>
-              <circle cx="150" cy="80" r="66" fill="none" stroke="#9b6bf0" stroke-width="1.2" stroke-dasharray="3 6" opacity="0.35"/>
-              <circle cx="150" cy="80" r="15" fill="#5b6ef5"/>
-              <g class="orbit-spin"><circle class="orbit-dot" cx="195" cy="80" r="4" fill="#4fd1a5"/></g>
-              <g class="orbit-spin r2"><circle class="orbit-dot" cx="150" cy="14" r="3" fill="#ec6fc0"/></g>
-            </svg>
-          </div>
-          <div class="view-hint">🔍 View full details</div>
-        </div>
-        <div class="proj-body">
-          <div class="proj-num grad-text">04 · Full-Stack AI · Cloud</div>
-          <h3>NRT AI — Free, Always-On AI Assistant</h3>
-          <p>A free, always-on AI assistant that chats, searches and browses the web, generates and understands images, writes and runs code, and takes voice input — built on Cloudflare Workers AI with a real-time 3D space scene background.</p>
-          <div class="proj-highlight">No cold start, no server billing</div>
-          <div class="tech-tags"><span>Next.js</span><span>TypeScript</span><span>Cloudflare Workers</span><span>Workers AI</span></div>
-          <div class="card-btns">
-            <a href="https://nrt-ai.rohan-nallapaneni.workers.dev" target="_blank" rel="noopener" class="btn btn-primary btn-sm">Live Demo</a>
-            <a href="https://github.com/rohanteja09/nrt-ai" target="_blank" rel="noopener" class="btn btn-ghost btn-sm">GitHub</a>
-            <button class="btn btn-ghost btn-sm" onclick="openProjectModal('nrtai')">Details</button>
           </div>
         </div>
       </div>
@@ -837,6 +883,10 @@
     <div class="modal-block">
       <h4>Overview</h4>
       <p id="modalOverview"></p>
+    </div>
+    <div class="modal-block">
+      <h4>Problem It Solves</h4>
+      <p id="modalProblem"></p>
     </div>
     <div class="modal-block">
       <h4>Architecture</h4>
@@ -1009,7 +1059,7 @@
         <div class="entry-org grad-text">SRM Institute of Science and Technology — CGPA 8.64</div>
         <ul class="entry-list">
           <li>Coursework in Object-Oriented Programming, Data Structures &amp; Algorithms, and Database Management Systems.</li>
-          <li>Built and deployed four independent full-stack and machine learning projects alongside coursework.</li>
+          <li>Built and deployed five independent full-stack and machine learning projects alongside coursework.</li>
         </ul>
       </div>
     </div>
@@ -1279,6 +1329,7 @@
       cat: 'Machine Learning · Network Security',
       title: 'Android Malware Detection System',
       overview: 'A full-stack machine learning web application that classifies Android network traffic as benign or malicious, using a Random Forest classifier trained on 10 key network-traffic features and served in real time through a Flask REST API.',
+      problem: 'Signature-based antivirus struggles to catch new or obfuscated Android malware. This tool classifies network traffic behavior in real time with a trained ML model, catching malicious apps that signature matching misses.',
       arch: ['Network Traffic Input', 'RobustScaler Normalization', 'Random Forest Classifier', 'Flask REST API', 'Prediction Result'],
       features: [
         'Flask REST API with /predict, /benign, /malware, and /generate-live endpoints',
@@ -1302,6 +1353,7 @@
       cat: 'Full-Stack Java · Healthcare',
       title: 'Web-Based Health Diagnosis System',
       overview: 'A full-stack health diagnosis web application built with Java, JSP, and Servlets following MVC architecture, supporting dataset upload, preprocessing, and ML-based disease prediction — migrated from local MySQL to TiDB Cloud and containerized with Docker for deployment.',
+      problem: 'Clinics without in-house specialists or fast lab turnaround need a way to get a preliminary diagnosis quickly. This system lets a clinician upload patient data and get an ML-assisted diagnosis instantly.',
       arch: ['Dataset Upload', 'Preprocessing', 'CNN/LSTM Model', 'Servlet (MVC)', 'JSP View', 'TiDB Cloud'],
       features: [
         'Dataset management and preprocessing modules',
@@ -1326,6 +1378,7 @@
       cat: 'Data Science · Environment',
       title: 'Water Quality Prediction System',
       overview: 'A machine learning system predicting Ganga River water quality from physicochemical parameters — pH, dissolved oxygen, BOD, turbidity, and conductivity — using Scikit-learn classification models, with the full training pipeline documented in a Jupyter notebook.',
+      problem: 'Lab-testing river water for pollution and potability is slow and resource-intensive for monitoring agencies. This system predicts water quality directly from physicochemical readings, enabling faster, cheaper screening.',
       arch: ['Historical Water Data', 'Cleaning & Feature Selection', '80/20 Train-Test Split', 'Scikit-learn Model', 'Prediction Interface'],
       features: [
         'Classification across pH, dissolved oxygen, BOD, turbidity, and conductivity',
@@ -1350,6 +1403,7 @@
       cat: 'Full-Stack AI · Cloud',
       title: 'NRT AI — Free, Always-On AI Assistant',
       overview: 'A free, always-on AI assistant that chats, searches and browses the web, generates and understands images, writes and runs code, and takes voice input — one chat surface backed by a single agent that reaches for tools on its own, running entirely on Cloudflare\'s free tier with no cold start and no server billing.',
+      problem: 'Free AI demos are usually rate-limited trials, paid APIs, or servers that spin down and cold-start. NRT AI proves a fully-featured assistant can stay live and free for anyone, indefinitely, entirely on Cloudflare\'s free tier.',
       arch: ['User Message', 'Routing Step (Llama 3.3 70B)', 'Tool Call — Search / Browse / Image / Code', 'Streamed Response'],
       features: [
         'Chat powered by Workers AI (Llama 3.3 70B) with a lightweight routing step so plain conversation never triggers unnecessary tool calls',
@@ -1372,6 +1426,32 @@
       ],
       live: 'https://nrt-ai.rohan-nallapaneni.workers.dev',
       github: 'https://github.com/rohanteja09/nrt-ai'
+    },
+    layoutiq: {
+      cat: 'Compliance Tech · Real Estate',
+      title: 'LayoutIQ — AP Layout Compliance Checker',
+      overview: 'A compliance checker for Licensed Town Planners (LTPs) preparing layout plans for Andhra Pradesh\'s DTCP and urban development authorities — parses APDPMS-generated layout plan PDFs, or takes manual plot entry, and validates plot dimensions, road widths, and open-space reservations against the selected authority\'s rules before submission.',
+      problem: 'LTPs are legally accountable for the layout plans they certify, and DTCP/UDA authorities reject plans over compliance issues that could\'ve been caught earlier. LayoutIQ flags violations before submission, cutting the rejection-resubmission cycle that costs LTPs time and puts their professional certification on the line.',
+      arch: ['APDPMS Layout PDF / Manual Entry', 'Parser', 'Authority Rule Set (DTCP / UDA)', 'Compliance Engine', 'Flagged Report'],
+      features: [
+        'Parses APDPMS-generated layout plan PDFs (LP / TLP), or accepts manual plot entry when a PDF isn\'t available',
+        'Validates plot area, width, and frontage against minimums, and road widths by length tier',
+        'Checks open space, amenity, and utility area percentages against the selected authority\'s rules',
+        'Authority-specific overrides for APCRDA zoning and TUDA buffer zones, covering DTCP and AP\'s UDAs (APCRDA, VMRDA, NUDA, OUDA, TUDA, KUDA, Kadapa UDA, NMC, and others)',
+        'Flags anything requiring professional judgment rather than guessing at a rule'
+      ],
+      tech: ['Next.js', 'TypeScript', 'PDF Parsing', 'Cloudflare Workers'],
+      challenges: [
+        'Sourcing accurate, current rule thresholds (setbacks, road width, OSR%, FSI) from real DTCP/UDA rulebooks and Government Orders rather than guessing',
+        'Handling authority-specific rule overrides (APCRDA zoning, TUDA buffer zones) on top of the base DTCP rule set',
+        'Reliably parsing plot/layout data out of APDPMS-generated PDFs, which vary in structure across authorities'
+      ],
+      future: [
+        'Expand authority-specific overrides to the remaining AP UDAs as rule data is verified',
+        'Generate a downloadable, submission-ready compliance report alongside the flagged results'
+      ],
+      live: 'https://layoutiqsvrt.rohan-nallapaneni.workers.dev',
+      github: 'https://github.com/rohanteja09/layoutiq'
     }
   };
 
@@ -1381,6 +1461,7 @@
     document.getElementById('modalCat').textContent = p.cat;
     document.getElementById('modalTitle').textContent = p.title;
     document.getElementById('modalOverview').textContent = p.overview;
+    document.getElementById('modalProblem').textContent = p.problem;
     document.getElementById('modalArch').innerHTML = p.arch.map((step, i) =>
       `<span class="arch-step">${step}</span>` + (i < p.arch.length - 1 ? '<span class="arch-arrow">→</span>' : '')
     ).join('');
