@@ -281,6 +281,7 @@
   .project-card:nth-child(1){ transition-delay: 0s; }
   .project-card:nth-child(2){ transition-delay: .12s; }
   .project-card:nth-child(3){ transition-delay: .24s; }
+  .project-card:nth-child(4){ transition-delay: .36s; }
   .project-card.revealed{ opacity:1; transform:translateY(0); }
   .project-card:hover{ border-color: transparent; box-shadow: 0 30px 70px -25px rgba(91,110,245,0.35); }
   .project-card:nth-child(even){ direction: rtl; }
@@ -346,6 +347,10 @@
   .ripple.r3{ animation-delay: 2.2s; }
   @keyframes rippleOut{ 0%{ transform: scale(0.3); opacity:0.7; } 100%{ transform: scale(1.6); opacity:0; } }
   .wave{ animation: waveMove 6s linear infinite; }
+  .orbit-spin{ transform-origin: 150px 80px; animation: orbitSpin 6s linear infinite; }
+  .orbit-spin.r2{ animation-duration: 9s; animation-direction: reverse; }
+  @keyframes orbitSpin{ to{ transform: rotate(360deg); } }
+  .orbit-dot{ animation: nodePulse 2.4s ease-in-out infinite; }
   @keyframes waveMove{ to{ transform: translateX(-100px); } }
 
   @media (max-width:820px){
@@ -572,7 +577,7 @@
         </a>
       </div>
       <div class="stat-strip fade-up" style="animation-delay:.55s;">
-        <div class="stat"><b class="grad-text counter" data-target="3">0</b><span>Live Projects</span></div>
+        <div class="stat"><b class="grad-text counter" data-target="4">0</b><span>Live Projects</span></div>
         <div class="stat"><b class="grad-text counter" data-target="4">0</b><span>Certifications</span></div>
         <div class="stat"><b class="grad-text counter" data-target="8.64" data-decimal="true">0</b><span>CGPA</span></div>
       </div>
@@ -602,7 +607,7 @@
     <div class="about-grid">
       <div class="reveal">
         <p>I'm a B.Tech Computer Science graduate from SRM Institute of Science and Technology, building production-style web applications across the entire stack — React and Tailwind on the front end, Spring Boot and secure REST APIs on the back end, MySQL underneath, deployed with Docker and AWS.</p>
-        <p>Alongside that, I've independently built and deployed three machine-learning-driven applications — from Android malware detection to health diagnostics — taking each from a trained model to a live, usable web app.</p>
+        <p>Alongside that, I've independently built and deployed four AI and machine-learning-driven applications — from Android malware detection to health diagnostics to a full-stack AI assistant on Cloudflare Workers — taking each from a trained model or agent to a live, usable web app.</p>
       </div>
       <div class="quick-facts reveal">
         <div class="fact-card"><div class="fact-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c0 1.5 3 3 6 3s6-1.5 6-3v-5"/></svg></div><div><b>Education</b><span>B.Tech CSE, SRM IST — CGPA 8.64</span></div></div>
@@ -673,7 +678,7 @@
     <div class="section-head reveal">
       <div class="eyebrow"><span>Projects</span></div>
       <h2 class="section-title">Things I've shipped</h2>
-      <p class="section-sub">Three end-to-end applications, each deployed and live. Click a preview to see full details.</p>
+      <p class="section-sub">Four end-to-end applications, each deployed and live. Click a preview to see full details.</p>
     </div>
 
     <div class="filter-row reveal">
@@ -777,6 +782,38 @@
             <a href="https://water-probability-prediction-system-mft5.onrender.com/" target="_blank" rel="noopener" class="btn btn-primary btn-sm">Live Demo</a>
             <a href="https://github.com/rohanteja09/Water_probability_prediction_system" target="_blank" rel="noopener" class="btn btn-ghost btn-sm">GitHub</a>
             <button class="btn btn-ghost btn-sm" onclick="openProjectModal('water')">Details</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card" data-category="ai-ml" data-project="nrtai">
+        <div class="proj-visual" onclick="openProjectModal('nrtai')">
+          <div class="browser-chrome">
+            <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+            <span class="browser-url">nrt-ai.rohan-nallapaneni.workers.dev</span>
+          </div>
+          <div class="live-badge"><span class="dot"></span>LIVE</div>
+          <div class="art-frame">
+            <svg viewBox="0 0 300 160" aria-hidden="true">
+              <circle cx="150" cy="80" r="45" fill="none" stroke="#5b6ef5" stroke-width="1.2" stroke-dasharray="4 5" opacity="0.45"/>
+              <circle cx="150" cy="80" r="66" fill="none" stroke="#9b6bf0" stroke-width="1.2" stroke-dasharray="3 6" opacity="0.35"/>
+              <circle cx="150" cy="80" r="15" fill="#5b6ef5"/>
+              <g class="orbit-spin"><circle class="orbit-dot" cx="195" cy="80" r="4" fill="#4fd1a5"/></g>
+              <g class="orbit-spin r2"><circle class="orbit-dot" cx="150" cy="14" r="3" fill="#ec6fc0"/></g>
+            </svg>
+          </div>
+          <div class="view-hint">🔍 View full details</div>
+        </div>
+        <div class="proj-body">
+          <div class="proj-num grad-text">04 · Full-Stack AI · Cloud</div>
+          <h3>NRT AI — Free, Always-On AI Assistant</h3>
+          <p>A free, always-on AI assistant that chats, searches and browses the web, generates and understands images, writes and runs code, and takes voice input — built on Cloudflare Workers AI with a real-time 3D space scene background.</p>
+          <div class="proj-highlight">No cold start, no server billing</div>
+          <div class="tech-tags"><span>Next.js</span><span>TypeScript</span><span>Cloudflare Workers</span><span>Workers AI</span></div>
+          <div class="card-btns">
+            <a href="https://nrt-ai.rohan-nallapaneni.workers.dev" target="_blank" rel="noopener" class="btn btn-primary btn-sm">Live Demo</a>
+            <a href="https://github.com/rohanteja09/nrt-ai" target="_blank" rel="noopener" class="btn btn-ghost btn-sm">GitHub</a>
+            <button class="btn btn-ghost btn-sm" onclick="openProjectModal('nrtai')">Details</button>
           </div>
         </div>
       </div>
@@ -972,7 +1009,7 @@
         <div class="entry-org grad-text">SRM Institute of Science and Technology — CGPA 8.64</div>
         <ul class="entry-list">
           <li>Coursework in Object-Oriented Programming, Data Structures &amp; Algorithms, and Database Management Systems.</li>
-          <li>Built and deployed three independent full-stack and machine learning projects alongside coursework.</li>
+          <li>Built and deployed four independent full-stack and machine learning projects alongside coursework.</li>
         </ul>
       </div>
     </div>
@@ -1308,6 +1345,33 @@
       ],
       live: 'https://water-probability-prediction-system-mft5.onrender.com/',
       github: 'https://github.com/rohanteja09/Water_probability_prediction_system'
+    },
+    nrtai: {
+      cat: 'Full-Stack AI · Cloud',
+      title: 'NRT AI — Free, Always-On AI Assistant',
+      overview: 'A free, always-on AI assistant that chats, searches and browses the web, generates and understands images, writes and runs code, and takes voice input — one chat surface backed by a single agent that reaches for tools on its own, running entirely on Cloudflare\'s free tier with no cold start and no server billing.',
+      arch: ['User Message', 'Routing Step (Llama 3.3 70B)', 'Tool Call — Search / Browse / Image / Code', 'Streamed Response'],
+      features: [
+        'Chat powered by Workers AI (Llama 3.3 70B) with a lightweight routing step so plain conversation never triggers unnecessary tool calls',
+        'Web search via a resilient three-provider fallback chain (DuckDuckGo → DuckDuckGo Lite → Wikipedia)',
+        'Page browsing using the Workers runtime\'s native HTMLRewriter',
+        'Text-to-image generation (FLUX.1 schnell) and image understanding (Moondream 3.1)',
+        'Voice input via the browser\'s Web Speech API, and code that the agent writes and runs client-side in a sandboxed iframe',
+        'Real-time 3D background (three.js): an Earth synced to real IST day/night, orbiting satellites, and an asteroid belt',
+        'Per-visitor daily rate limits backed by Cloudflare KV, with graceful "at capacity" handling instead of raw errors'
+      ],
+      tech: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Cloudflare Workers', 'Workers AI', 'Cloudflare KV', 'three.js', 'Framer Motion'],
+      challenges: [
+        'Keeping the demo free forever on a single Cloudflare account without risking overage billing',
+        'Chaining fallback search providers since DuckDuckGo\'s HTML endpoint bot-challenges requests from datacenter IPs',
+        'Keeping Llama 3.3 tool-calling from derailing into unrelated tool calls on messages that need none, solved with a cheap router pass first'
+      ],
+      future: [
+        'Persist conversation history across sessions instead of per-tab state',
+        'Add more agent tools (e.g. structured data lookup) behind the same routing step'
+      ],
+      live: 'https://nrt-ai.rohan-nallapaneni.workers.dev',
+      github: 'https://github.com/rohanteja09/nrt-ai'
     }
   };
 
