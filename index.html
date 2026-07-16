@@ -364,8 +364,8 @@
   .scan-beam{ animation: scanSweep 3.6s ease-in-out infinite; }
   @keyframes scanSweep{ 0%{ transform: translateX(0); opacity:0; } 8%{ opacity:.9; } 50%{ transform: translateX(230px); opacity:.9; } 92%{ opacity:0; } 100%{ transform: translateX(250px); opacity:0; } }
   .art-layer{ position:absolute; inset:0; display:flex; align-items:center; justify-content:center; }
-  .art-layer-grid{ animation: layerCycleGrid 8s ease-in-out infinite; }
-  .art-layer-logo{ animation: layerCycleLogo 8s ease-in-out infinite; }
+  .art-layer-grid{ opacity:0; animation: layerCycleGrid 8s ease-in-out infinite; }
+  .art-layer-logo{ opacity:1; animation: layerCycleLogo 8s ease-in-out infinite; }
   @keyframes layerCycleGrid{ 0%,40%{ opacity:0; } 50%,90%{ opacity:1; } 100%{ opacity:0; } }
   @keyframes layerCycleLogo{ 0%,40%{ opacity:1; transform:scale(1); } 50%,90%{ opacity:0; transform:scale(.85); } 100%{ opacity:1; transform:scale(1); } }
   .logo-glow{
