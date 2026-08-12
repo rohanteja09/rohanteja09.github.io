@@ -283,6 +283,7 @@
   .project-card:nth-child(3){ transition-delay: .24s; }
   .project-card:nth-child(4){ transition-delay: .36s; }
   .project-card:nth-child(5){ transition-delay: .48s; }
+  .project-card:nth-child(6){ transition-delay: .6s; }
   .project-card.revealed{ opacity:1; transform:translateY(0); }
   .project-card:hover{ border-color: transparent; box-shadow: 0 30px 70px -25px rgba(91,110,245,0.35); }
   .project-card:nth-child(even){ direction: rtl; }
@@ -606,7 +607,7 @@
         </a>
       </div>
       <div class="stat-strip fade-up" style="animation-delay:.55s;">
-        <div class="stat"><b class="grad-text counter" data-target="5">0</b><span>Live Projects</span></div>
+        <div class="stat"><b class="grad-text counter" data-target="6">0</b><span>Live Projects</span></div>
         <div class="stat"><b class="grad-text counter" data-target="4">0</b><span>Certifications</span></div>
         <div class="stat"><b class="grad-text counter" data-target="8.64" data-decimal="true">0</b><span>CGPA</span></div>
       </div>
@@ -636,7 +637,7 @@
     <div class="about-grid">
       <div class="reveal">
         <p>I'm a B.Tech Computer Science graduate from SRM Institute of Science and Technology, building production-style web applications across the entire stack — React and Tailwind on the front end, Spring Boot and secure REST APIs on the back end, MySQL underneath, deployed with Docker and AWS.</p>
-        <p>Alongside that, I've independently built and deployed five AI and full-stack applications — from Android malware detection to health diagnostics to an AP layout-plan compliance checker to a full-stack AI assistant on Cloudflare Workers — taking each from a trained model or rules engine to a live, usable web app.</p>
+        <p>Alongside that, I've independently built and deployed six AI and full-stack applications — from Android malware detection to health diagnostics to an AP layout-plan compliance checker to an AI-powered security triage platform — taking each from a trained model or rules engine to a live, usable web app.</p>
       </div>
       <div class="quick-facts reveal">
         <div class="fact-card"><div class="fact-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c0 1.5 3 3 6 3s6-1.5 6-3v-5"/></svg></div><div><b>Education</b><span>B.Tech CSE, SRM IST — CGPA 8.64</span></div></div>
@@ -707,7 +708,7 @@
     <div class="section-head reveal">
       <div class="eyebrow"><span>Projects</span></div>
       <h2 class="section-title">Things I've shipped</h2>
-      <p class="section-sub">Five end-to-end applications, each deployed and live. Click a preview to see full details.</p>
+      <p class="section-sub">Six end-to-end applications, each deployed and live. Click a preview to see full details.</p>
     </div>
 
     <div class="filter-row reveal">
@@ -921,6 +922,47 @@
           </div>
         </div>
       </div>
+
+      <div class="project-card" data-category="cyber ai-ml" data-project="shipguard">
+        <div class="proj-visual" onclick="openProjectModal('shipguard')">
+          <div class="browser-chrome">
+            <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+            <span class="browser-url">shipguard-ai.rohan-nallapaneni.workers.dev</span>
+          </div>
+          <div class="live-badge"><span class="dot"></span>LIVE</div>
+          <div class="art-frame">
+            <svg viewBox="0 0 300 160" aria-hidden="true">
+              <!-- shield mark -->
+              <path d="M90,26 L122,38 L122,74 C122,100 106,116 90,124 C74,116 58,100 58,74 L58,38 Z" fill="none" stroke="#5b6ef5" stroke-width="2"/>
+              <path d="M75,74 l10,10 l24,-26" fill="none" stroke="#4fd1a5" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+              <!-- findings -> triage graph -->
+              <line class="data-line" x1="126" y1="56" x2="176" y2="44" stroke="#9b6bf0" stroke-width="1.4" stroke-dasharray="4 6" opacity="0.6"/>
+              <line class="data-line" x1="126" y1="80" x2="176" y2="80" stroke="#9b6bf0" stroke-width="1.4" stroke-dasharray="4 6" opacity="0.6"/>
+              <line class="data-line" x1="126" y1="104" x2="176" y2="116" stroke="#9b6bf0" stroke-width="1.4" stroke-dasharray="4 6" opacity="0.6"/>
+              <circle cx="182" cy="44" r="6" fill="#ec6fc0" opacity="0.85"/>
+              <circle cx="182" cy="80" r="9" fill="#ec6fc0"/>
+              <circle cx="182" cy="116" r="5" fill="#ec6fc0" opacity="0.55"/>
+              <line x1="188" y1="80" x2="234" y2="80" stroke="#4fd1a5" stroke-width="1.6"/>
+              <circle cx="240" cy="80" r="12" fill="#4fd1a5"/>
+              <path d="M234,80 l4,5 l9,-10" fill="none" stroke="#0c1120" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="view-hint">🔍 View full details</div>
+        </div>
+        <div class="proj-body">
+          <div class="proj-num grad-text">06 · AI Security · DevSecOps</div>
+          <h3>ShipGuard AI — AI-Powered Security Triage</h3>
+          <p>A static-analysis triage platform that turns raw Semgrep, ESLint, and gitleaks output into a small, prioritized set of findings — each explained against the real surrounding code by an LLM, cross-verified across models, and connected through a Neo4j knowledge graph so a change's blast radius is visible, not guessed.</p>
+          <p class="proj-problem"><b>Real-world problem:</b> Static analyzers dump hundreds of raw findings with no sense of what actually matters. ShipGuard ranks and explains them, flags recently-changed code as higher risk, and surfaces the ones worth a human's time instead of a wall of noise.</p>
+          <div class="proj-highlight">Findings explained, ranked & graphed — not just listed</div>
+          <div class="tech-tags"><span>Spring Boot</span><span>Next.js</span><span>PostgreSQL</span><span>Neo4j</span><span>Qdrant</span><span>LLM Agents</span></div>
+          <div class="card-btns">
+            <a href="https://shipguard-ai.rohan-nallapaneni.workers.dev" target="_blank" rel="noopener" class="btn btn-primary btn-sm">Live Demo</a>
+            <a href="https://github.com/rohanteja09/shipguard-ai" target="_blank" rel="noopener" class="btn btn-ghost btn-sm">GitHub</a>
+            <button class="btn btn-ghost btn-sm" onclick="openProjectModal('shipguard')">Details</button>
+          </div>
+        </div>
+      </div>
     </div>
 
     <div class="more-projects reveal">
@@ -1117,7 +1159,7 @@
         <div class="entry-org grad-text">SRM Institute of Science and Technology — CGPA 8.64</div>
         <ul class="entry-list">
           <li>Coursework in Object-Oriented Programming, Data Structures &amp; Algorithms, and Database Management Systems.</li>
-          <li>Built and deployed five independent full-stack and machine learning projects alongside coursework.</li>
+          <li>Built and deployed six independent full-stack and machine learning projects alongside coursework.</li>
         </ul>
       </div>
     </div>
@@ -1510,6 +1552,35 @@
       ],
       live: 'https://layoutiqsvrt.rohan-nallapaneni.workers.dev',
       github: 'https://github.com/rohanteja09/layoutiq'
+    },
+    shipguard: {
+      cat: 'AI Security · DevSecOps',
+      title: 'ShipGuard AI — AI-Powered Security Triage',
+      overview: 'A static-analysis triage platform that imports a GitHub repo, runs Semgrep/ESLint/gitleaks against it via a GitHub Actions pipeline, and turns the raw output into a small, prioritized set of findings — each explained against the actual surrounding code by a router/specialist LLM agent split (cross-verified across Groq and OpenRouter), retrieved with RAG over a Qdrant-indexed codebase, and connected through a Neo4j knowledge graph that maps files, symbols, and commits so a finding\'s blast radius is visible, not guessed.',
+      problem: 'Static analyzers are accurate but noisy — they dump hundreds of findings with no sense of what actually matters, leaving engineers to triage by hand. ShipGuard ranks findings by severity and recency of change, explains each one in plain language against real code, and produces a shareable production-readiness score, so teams see what to fix first instead of a wall of raw output.',
+      arch: ['GitHub Import / OAuth', 'GitHub Actions — Semgrep + ESLint + gitleaks', 'Router → Specialist LLM Agents (Groq + OpenRouter)', 'RAG (Qdrant) + Knowledge Graph (Neo4j)', 'Ranked Findings, Report & Readiness Score'],
+      features: [
+        'Router/specialist LLM agent split with cross-category correlation, explaining each finding against real retrieved code rather than a generic description',
+        'Neo4j knowledge graph (files, symbols, commits) powering blast-radius and "why now" trend queries across a repo\'s scan history',
+        'Deployment-aware risk scoring that re-sorts findings so recently-changed files surface above same-severity ones that aren\'t',
+        'Self-rated confidence scoring per finding, with a "worth a human look" flag below 70%',
+        'Persistent, RAG-backed codebase chat, fix-suggestion diffs, and branch/PR comparison',
+        'A production-readiness score with a shareable SVG badge, a downloadable PDF report (Apache PDFBox), and an AI-narrated audio summary (Web Speech API, no paid TTS)',
+        'Private-repo scanning: the GitHub Actions workflow pulls the clone credential itself via a callback-token-authenticated endpoint and masks it immediately, instead of ever passing it through workflow_dispatch inputs'
+      ],
+      tech: ['Spring Boot 3', 'Java 21', 'Next.js', 'TypeScript', 'PostgreSQL (Neon)', 'Neo4j Aura', 'Qdrant Cloud', 'Groq / OpenRouter LLMs', 'Cloudflare Workers', 'Render'],
+      challenges: [
+        'Relaying a private repo\'s GitHub OAuth token into the scan workflow without ever exposing it in an Actions run\'s visible input log',
+        'Keeping the async explanation pipeline from racing a still-uncommitted database insert when triggered straight off a transactional save',
+        'Wiring self-rated confidence scoring end-to-end after finding it had a DB column but was never actually being set',
+        'Gluing together a fully free-tier deployment across four different providers (Cloudflare, Render, Neon, Qdrant Cloud, Neo4j Aura) with no paid infra'
+      ],
+      future: [
+        'Multi-repo organization support for teams managing several codebases at once',
+        'A public API/SDK and IDE plugins for surfacing findings outside the web dashboard'
+      ],
+      live: 'https://shipguard-ai.rohan-nallapaneni.workers.dev',
+      github: 'https://github.com/rohanteja09/shipguard-ai'
     }
   };
 
