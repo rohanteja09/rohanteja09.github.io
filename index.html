@@ -608,7 +608,7 @@
       </div>
       <div class="stat-strip fade-up" style="animation-delay:.55s;">
         <div class="stat"><b class="grad-text counter" data-target="6">0</b><span>Live Projects</span></div>
-        <div class="stat"><b class="grad-text counter" data-target="4">0</b><span>Certifications</span></div>
+        <div class="stat"><b class="grad-text counter" data-target="5">0</b><span>Certifications</span></div>
         <div class="stat"><b class="grad-text counter" data-target="8.64" data-decimal="true">0</b><span>CGPA</span></div>
       </div>
     </div>
@@ -718,6 +718,46 @@
     </div>
 
     <div class="project-list">
+      <div class="project-card" data-category="cyber ai-ml" data-project="shipguard">
+        <div class="proj-visual" onclick="openProjectModal('shipguard')">
+          <div class="browser-chrome">
+            <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+            <span class="browser-url">shipguard-ai.rohan-nallapaneni.workers.dev</span>
+          </div>
+          <div class="live-badge"><span class="dot"></span>LIVE</div>
+          <div class="art-frame">
+            <svg viewBox="0 0 300 160" aria-hidden="true">
+              <!-- shield mark -->
+              <path d="M90,26 L122,38 L122,74 C122,100 106,116 90,124 C74,116 58,100 58,74 L58,38 Z" fill="none" stroke="#5b6ef5" stroke-width="2"/>
+              <path d="M75,74 l10,10 l24,-26" fill="none" stroke="#4fd1a5" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+              <!-- findings -> triage graph -->
+              <line class="data-line" x1="126" y1="56" x2="176" y2="44" stroke="#9b6bf0" stroke-width="1.4" stroke-dasharray="4 6" opacity="0.6"/>
+              <line class="data-line" x1="126" y1="80" x2="176" y2="80" stroke="#9b6bf0" stroke-width="1.4" stroke-dasharray="4 6" opacity="0.6"/>
+              <line class="data-line" x1="126" y1="104" x2="176" y2="116" stroke="#9b6bf0" stroke-width="1.4" stroke-dasharray="4 6" opacity="0.6"/>
+              <circle cx="182" cy="44" r="6" fill="#ec6fc0" opacity="0.85"/>
+              <circle cx="182" cy="80" r="9" fill="#ec6fc0"/>
+              <circle cx="182" cy="116" r="5" fill="#ec6fc0" opacity="0.55"/>
+              <line x1="188" y1="80" x2="234" y2="80" stroke="#4fd1a5" stroke-width="1.6"/>
+              <circle cx="240" cy="80" r="12" fill="#4fd1a5"/>
+              <path d="M234,80 l4,5 l9,-10" fill="none" stroke="#0c1120" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="view-hint">🔍 View full details</div>
+        </div>
+        <div class="proj-body">
+          <div class="proj-num grad-text">01 · AI Security · DevSecOps</div>
+          <h3>ShipGuard AI — AI-Powered Security Triage</h3>
+          <p>A static-analysis triage platform that turns raw Semgrep, ESLint, and gitleaks output into a small, prioritized set of findings — each explained against the real surrounding code by an LLM, cross-verified across models, and connected through a Neo4j knowledge graph so a change's blast radius is visible, not guessed.</p>
+          <p class="proj-problem"><b>Real-world problem:</b> Static analyzers dump hundreds of raw findings with no sense of what actually matters. ShipGuard ranks and explains them, flags recently-changed code as higher risk, and surfaces the ones worth a human's time instead of a wall of noise.</p>
+          <div class="proj-highlight">Findings explained, ranked & graphed — not just listed</div>
+          <div class="tech-tags"><span>Spring Boot</span><span>Next.js</span><span>PostgreSQL</span><span>Neo4j</span><span>Qdrant</span><span>LLM Agents</span></div>
+          <div class="card-btns">
+            <a href="https://shipguard-ai.rohan-nallapaneni.workers.dev" target="_blank" rel="noopener" class="btn btn-primary btn-sm">Live Demo</a>
+            <a href="https://github.com/rohanteja09/shipguard-ai" target="_blank" rel="noopener" class="btn btn-ghost btn-sm">GitHub</a>
+            <button class="btn btn-ghost btn-sm" onclick="openProjectModal('shipguard')">Details</button>
+          </div>
+        </div>
+      </div>
       <div class="project-card" data-category="ai-ml" data-project="nrtai">
         <div class="proj-visual" onclick="openProjectModal('nrtai')">
           <div class="browser-chrome">
@@ -757,7 +797,7 @@
           <div class="view-hint">🔍 View full details</div>
         </div>
         <div class="proj-body">
-          <div class="proj-num grad-text">01 · Full-Stack AI · Cloud</div>
+          <div class="proj-num grad-text">02 · Full-Stack AI · Cloud</div>
           <h3>NRT AI — Free, Always-On AI Assistant</h3>
           <p>A free, always-on AI assistant that chats, searches and browses the web, generates and understands images, writes and runs code, and takes voice input — built on Cloudflare Workers AI with a real-time 3D space scene background.</p>
           <p class="proj-problem"><b>Real-world problem:</b> Free AI demos are usually rate-limited trials, paid APIs, or servers that spin down and cold-start. NRT AI proves a fully-featured assistant can stay live and free for anyone, indefinitely, entirely on Cloudflare's free tier.</p>
@@ -808,7 +848,7 @@
           <div class="view-hint">🔍 View full details</div>
         </div>
         <div class="proj-body">
-          <div class="proj-num grad-text">02 · Compliance Tech · Real Estate</div>
+          <div class="proj-num grad-text">03 · Compliance Tech · Real Estate</div>
           <h3>LayoutIQ — AP Layout Compliance Checker</h3>
           <p>A compliance checker for Licensed Town Planners preparing layout plans for Andhra Pradesh's DTCP and urban development authorities — parses APDPMS-generated layout plan PDFs, or takes manual plot entry, and validates plot dimensions, road widths, and open-space reservations against the selected authority's rules before submission.</p>
           <p class="proj-problem"><b>Real-world problem:</b> LTPs are legally accountable for the layout plans they certify, and DTCP/UDA rejections over compliance issues cost weeks of resubmission. LayoutIQ catches violations before submission instead of after.</p>
@@ -845,7 +885,7 @@
           <div class="view-hint">🔍 View full details</div>
         </div>
         <div class="proj-body">
-          <div class="proj-num grad-text">03 · Machine Learning · Network Security</div>
+          <div class="proj-num grad-text">04 · Machine Learning · Network Security</div>
           <h3>Android Malware Detection System</h3>
           <p>Built and deployed a full-stack ML web application that classifies Android network traffic as benign or malicious, using a Random Forest classifier trained on 10 key network-traffic features, served through a Flask REST API.</p>
           <p class="proj-problem"><b>Real-world problem:</b> Signature-based antivirus struggles to catch new or obfuscated Android malware. This tool classifies network traffic behavior in real time with a trained ML model, catching malicious apps that signature matching misses.</p>
@@ -874,7 +914,7 @@
           <div class="view-hint">🔍 View full details</div>
         </div>
         <div class="proj-body">
-          <div class="proj-num grad-text">04 · Full-Stack Java · Healthcare</div>
+          <div class="proj-num grad-text">05 · Full-Stack Java · Healthcare</div>
           <h3>Web-Based Health Diagnosis System</h3>
           <p>A full-stack health diagnosis web application built with Java, JSP, and Servlets following MVC architecture — supporting dataset upload, preprocessing, and CNN/LSTM-based disease prediction, deployed via Docker on Render with a TiDB Cloud database.</p>
           <p class="proj-problem"><b>Real-world problem:</b> Clinics without in-house specialists or fast lab turnaround need a way to get a preliminary diagnosis quickly. This system lets a clinician upload patient data and get an ML-assisted diagnosis instantly.</p>
@@ -909,7 +949,7 @@
           <div class="view-hint">🔍 View full details</div>
         </div>
         <div class="proj-body">
-          <div class="proj-num grad-text">05 · Data Science</div>
+          <div class="proj-num grad-text">06 · Data Science</div>
           <h3>Water Quality Prediction System</h3>
           <p>A machine learning system predicting Ganga River water quality from physicochemical parameters — pH, dissolved oxygen, BOD, turbidity, conductivity — using Scikit-learn classification models, with an 80/20 train-test split evaluated on accuracy, precision, and recall.</p>
           <p class="proj-problem"><b>Real-world problem:</b> Lab-testing river water for pollution and potability is slow and resource-intensive for monitoring agencies. This system predicts water quality directly from physicochemical readings, enabling faster, cheaper screening.</p>
@@ -923,46 +963,6 @@
         </div>
       </div>
 
-      <div class="project-card" data-category="cyber ai-ml" data-project="shipguard">
-        <div class="proj-visual" onclick="openProjectModal('shipguard')">
-          <div class="browser-chrome">
-            <span class="dot"></span><span class="dot"></span><span class="dot"></span>
-            <span class="browser-url">shipguard-ai.rohan-nallapaneni.workers.dev</span>
-          </div>
-          <div class="live-badge"><span class="dot"></span>LIVE</div>
-          <div class="art-frame">
-            <svg viewBox="0 0 300 160" aria-hidden="true">
-              <!-- shield mark -->
-              <path d="M90,26 L122,38 L122,74 C122,100 106,116 90,124 C74,116 58,100 58,74 L58,38 Z" fill="none" stroke="#5b6ef5" stroke-width="2"/>
-              <path d="M75,74 l10,10 l24,-26" fill="none" stroke="#4fd1a5" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-              <!-- findings -> triage graph -->
-              <line class="data-line" x1="126" y1="56" x2="176" y2="44" stroke="#9b6bf0" stroke-width="1.4" stroke-dasharray="4 6" opacity="0.6"/>
-              <line class="data-line" x1="126" y1="80" x2="176" y2="80" stroke="#9b6bf0" stroke-width="1.4" stroke-dasharray="4 6" opacity="0.6"/>
-              <line class="data-line" x1="126" y1="104" x2="176" y2="116" stroke="#9b6bf0" stroke-width="1.4" stroke-dasharray="4 6" opacity="0.6"/>
-              <circle cx="182" cy="44" r="6" fill="#ec6fc0" opacity="0.85"/>
-              <circle cx="182" cy="80" r="9" fill="#ec6fc0"/>
-              <circle cx="182" cy="116" r="5" fill="#ec6fc0" opacity="0.55"/>
-              <line x1="188" y1="80" x2="234" y2="80" stroke="#4fd1a5" stroke-width="1.6"/>
-              <circle cx="240" cy="80" r="12" fill="#4fd1a5"/>
-              <path d="M234,80 l4,5 l9,-10" fill="none" stroke="#0c1120" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </div>
-          <div class="view-hint">🔍 View full details</div>
-        </div>
-        <div class="proj-body">
-          <div class="proj-num grad-text">06 · AI Security · DevSecOps</div>
-          <h3>ShipGuard AI — AI-Powered Security Triage</h3>
-          <p>A static-analysis triage platform that turns raw Semgrep, ESLint, and gitleaks output into a small, prioritized set of findings — each explained against the real surrounding code by an LLM, cross-verified across models, and connected through a Neo4j knowledge graph so a change's blast radius is visible, not guessed.</p>
-          <p class="proj-problem"><b>Real-world problem:</b> Static analyzers dump hundreds of raw findings with no sense of what actually matters. ShipGuard ranks and explains them, flags recently-changed code as higher risk, and surfaces the ones worth a human's time instead of a wall of noise.</p>
-          <div class="proj-highlight">Findings explained, ranked & graphed — not just listed</div>
-          <div class="tech-tags"><span>Spring Boot</span><span>Next.js</span><span>PostgreSQL</span><span>Neo4j</span><span>Qdrant</span><span>LLM Agents</span></div>
-          <div class="card-btns">
-            <a href="https://shipguard-ai.rohan-nallapaneni.workers.dev" target="_blank" rel="noopener" class="btn btn-primary btn-sm">Live Demo</a>
-            <a href="https://github.com/rohanteja09/shipguard-ai" target="_blank" rel="noopener" class="btn btn-ghost btn-sm">GitHub</a>
-            <button class="btn btn-ghost btn-sm" onclick="openProjectModal('shipguard')">Details</button>
-          </div>
-        </div>
-      </div>
     </div>
 
     <div class="more-projects reveal">
@@ -1047,6 +1047,12 @@
         <h3>Alteryx Designer Advanced Certification</h3>
         <div class="issuer">Alteryx</div>
         <a href="https://drive.google.com/file/d/1usq71J1peelPwDrovbjzCN_U6cHTPK5D/view?usp=sharing" target="_blank" rel="noopener" class="btn btn-ghost btn-sm">View Certificate</a>
+      </div>
+      <div class="cert-card">
+        <div class="cert-mark">AAI</div>
+        <h3>Oracle Certified Foundations Associate — Agentic AI</h3>
+        <div class="issuer">Oracle</div>
+        <a href="https://drive.google.com/file/d/1gsBAcurdz29H2qbOITwQBR-wU2IsHLP_/view?usp=sharing" target="_blank" rel="noopener" class="btn btn-ghost btn-sm">View Certificate</a>
       </div>
     </div>
   </div>
