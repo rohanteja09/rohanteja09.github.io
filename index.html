@@ -592,6 +592,7 @@
       </div>
       <p class="hero-meta fade-up" style="animation-delay:.25s;"><b>Computer Science &amp; Engineering</b> graduate from SRM Institute of Science &amp; Technology · CGPA 8.64/10</p>
       <p class="hero-meta fade-up" style="animation-delay:.3s;">🚀 Currently interning at <b>Lexon IT</b> as an <b>AI Full Stack Engineer</b></p>
+      <p class="hero-meta fade-up" style="animation-delay:.32s;">🛠 Now building <b><a href="https://app.autohiru.workers.dev/" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;">AutoHirU</a></b>: an AI job-application platform with a Chrome extension that finds matching jobs and applies for you across LinkedIn, Naukri and company career sites.</p>
       <div class="btn-row fade-up" style="animation-delay:.35s;">
         <a href="./RohanTeja_Resume.pdf" class="btn btn-primary" download>↓ Download Résumé</a>
         <a href="#contact" class="btn btn-ghost">✉ Contact Me</a>
@@ -1097,10 +1098,14 @@
         <h3>AI Full Stack Engineer Intern</h3>
         <div class="entry-org grad-text">Lexon IT</div>
         <ul class="entry-list">
-          <li>Building AI-powered full-stack features end to end, spanning React front ends and Spring Boot/REST back ends.</li>
-          <li>Integrating AI/ML capabilities into production-style web applications.</li>
+          <li>Building <b>AutoHirU</b> (<a href="https://app.autohiru.workers.dev/" target="_blank" rel="noopener">app.autohiru.workers.dev</a>), a job-search and application platform with separate candidate and recruiter portals. Stack: Next.js (App Router, TypeScript) on Cloudflare Workers, NestJS + Prisma on PostgreSQL (Neon), deployed on Render.</li>
+          <li>Built the Auto Apply engine: matches a candidate's profile against jobs pulled from LinkedIn, Naukri, Indeed, Adzuna and other boards, then submits applications and logs each attempt with its real status instead of faking "Applied".</li>
+          <li>Developed a Manifest V3 Chrome extension that runs inside the user's own logged-in browser session to drive LinkedIn and Naukri applications, so no third-party passwords are ever stored on our servers. Debugged it against live sites (infinite search loops, uncounted applications, slow form fills).</li>
+          <li>Wrote a generic Playwright form-filler for public ATS forms (Greenhouse, Lever, Ashby, Workable, SmartRecruiters), plus job-source adapters for each, verified against real open postings.</li>
+          <li>Added AI features on Groq/OpenRouter models: resume ATS scoring, cover letter generation, bullet rewriting, and an in-browser resume builder with live PDF preview.</li>
+          <li>Improved performance: faster post-login load, resume-import writes, job filtering and skill matching, and added missing database indexes. Started the recruiter portal (candidate pipeline, mailbox reply checks).</li>
         </ul>
-        <div class="entry-tags"><span>Currently ongoing</span></div>
+        <div class="entry-tags"><span>Currently ongoing</span><span>Next.js</span><span>NestJS</span><span>Prisma</span><span>PostgreSQL</span><span>Chrome Extension (MV3)</span><span>Playwright</span><span>Cloudflare Workers</span></div>
       </div>
     </div>
     <div class="entry-card reveal">
